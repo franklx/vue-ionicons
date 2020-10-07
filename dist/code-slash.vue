@@ -1,0 +1,27 @@
+<template>
+  <div
+    class="ion"
+    :class="ionClass"
+    :data-title="iconTitle"
+    data-name="code-slash-icon">
+    <svg viewBox="0 0 512 512"  :width="w" :height="h" class="ion__svg" ><path d="M160 389a20.91 20.91 0 01-13.82-5.2l-128-112a21 21 0 010-31.6l128-112a21 21 0 0127.66 31.61L63.89 256l109.94 96.19A21 21 0 01160 389zM352 389a21 21 0 01-13.84-36.81L448.11 256l-109.94-96.19a21 21 0 0127.66-31.61l128 112a21 21 0 010 31.6l-128 112A20.89 20.89 0 01352 389zM208 437a21 21 0 01-20.12-27l96-320a21 21 0 1140.23 12l-96 320A21 21 0 01208 437z"/></svg>
+  </div>
+</template>
+
+<script>
+import IoniconsMixin from './ionicons-mixin'
+
+export default {
+  name: "code-slash-icon",
+  mixins: [
+    IoniconsMixin
+  ],
+  data () {
+    let iconTitle = this.title ? this.title : "Code Slash Icon"
+    return {
+      iconTitle: iconTitle
+    }
+  }
+}
+</script>
+

@@ -1,0 +1,27 @@
+<template>
+  <div
+    class="ion"
+    :class="ionClass"
+    :data-title="iconTitle"
+    data-name="briefcase-sharp-icon">
+    <svg viewBox="0 0 512 512"  :width="w" :height="h" class="ion__svg" ><path d="M336 288H176v-32H16v196a12 12 0 0012 12h456a12 12 0 0012-12V256H336zM496 124a12 12 0 00-12-12H384V56a8 8 0 00-8-8H136a8 8 0 00-8 8v56H28a12 12 0 00-12 12v100h480zm-152-12H168V88h176z"/></svg>
+  </div>
+</template>
+
+<script>
+import IoniconsMixin from './ionicons-mixin'
+
+export default {
+  name: "briefcase-sharp-icon",
+  mixins: [
+    IoniconsMixin
+  ],
+  data () {
+    let iconTitle = this.title ? this.title : "Briefcase Sharp Icon"
+    return {
+      iconTitle: iconTitle
+    }
+  }
+}
+</script>
+

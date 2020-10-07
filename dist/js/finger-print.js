@@ -1,0 +1,181 @@
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global.vueIonicons = factory());
+}(this, (function () { 'use strict';
+
+  var A_ROTATE = 'rotate';
+  var A_BEAT = 'beat';
+  var A_SHAKE = 'shake';
+  var IoniconsMixin = {
+    computed: {
+      ionClass: function ionClass() {
+        var addClass = '';
+
+        if (this.animate === A_ROTATE) {
+          addClass = 'ion-rotate ';
+        } else if (this.animate === A_BEAT) {
+          addClass = 'ion-beat ';
+        } else if (this.animate === A_SHAKE) {
+          addClass = 'ion-shake ';
+        }
+
+        return "".concat(this.rootClass, " ").concat(addClass);
+      }
+    },
+    props: {
+      title: {
+        type: String,
+        "default": ''
+      },
+      rootClass: {
+        type: String,
+        "default": ''
+      },
+      w: {
+        type: String,
+        "default": '1em'
+      },
+      h: {
+        type: String,
+        "default": '1em'
+      },
+      animate: {
+        type: String,
+        "default": ''
+      }
+    }
+  };
+
+  //
+  var script = {
+    name: "finger-print-icon",
+    mixins: [IoniconsMixin],
+    data: function data() {
+      var iconTitle = this.title ? this.title : "Finger Print Icon";
+      return {
+        iconTitle: iconTitle
+      };
+    }
+  };
+
+  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
+  /* server only */
+  , shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+      createInjectorSSR = createInjector;
+      createInjector = shadowMode;
+      shadowMode = false;
+    } // Vue.extend constructor export interop.
+
+
+    var options = typeof script === 'function' ? script.options : script; // render functions
+
+    if (template && template.render) {
+      options.render = template.render;
+      options.staticRenderFns = template.staticRenderFns;
+      options._compiled = true; // functional template
+
+      if (isFunctionalTemplate) {
+        options.functional = true;
+      }
+    } // scopedId
+
+
+    if (scopeId) {
+      options._scopeId = scopeId;
+    }
+
+    var hook;
+
+    if (moduleIdentifier) {
+      // server build
+      hook = function hook(context) {
+        // 2.3 injection
+        context = context || // cached call
+        this.$vnode && this.$vnode.ssrContext || // stateful
+        this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
+        // 2.2 with runInNewContext: true
+
+        if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+          context = __VUE_SSR_CONTEXT__;
+        } // inject component styles
+
+
+        if (style) {
+          style.call(this, createInjectorSSR(context));
+        } // register component module identifier for async chunk inference
+
+
+        if (context && context._registeredComponents) {
+          context._registeredComponents.add(moduleIdentifier);
+        }
+      }; // used by ssr in case component is cached and beforeCreate
+      // never gets called
+
+
+      options._ssrRegister = hook;
+    } else if (style) {
+      hook = shadowMode ? function () {
+        style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+      } : function (context) {
+        style.call(this, createInjector(context));
+      };
+    }
+
+    if (hook) {
+      if (options.functional) {
+        // register for functional component in vue file
+        var originalRender = options.render;
+
+        options.render = function renderWithStyleInjection(h, context) {
+          hook.call(context);
+          return originalRender(h, context);
+        };
+      } else {
+        // inject component registration as beforeCreate hook
+        var existing = options.beforeCreate;
+        options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+      }
+    }
+
+    return script;
+  }
+
+  var normalizeComponent_1 = normalizeComponent;
+
+  /* script */
+  const __vue_script__ = script;
+
+  /* template */
+  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"ion",class:_vm.ionClass,attrs:{"data-title":_vm.iconTitle,"data-name":"finger-print-icon"}},[_c('svg',{staticClass:"ion__svg",attrs:{"viewBox":"0 0 512 512","width":_vm.w,"height":_vm.h}},[_c('path',{attrs:{"d":"M63.28 202a15.29 15.29 0 01-7.7-2 14.84 14.84 0 01-5.52-20.46C69.34 147.36 128 72.25 256 72.25c55.47 0 104.12 14.57 144.53 43.29 33.26 23.57 51.9 50.25 60.78 63.1a14.79 14.79 0 01-4 20.79 15.52 15.52 0 01-21.24-4C420 172.32 371 102 256 102c-112.25 0-163 64.71-179.53 92.46A15 15 0 0163.28 202z"}}),_c('path',{attrs:{"d":"M320.49 496a15.31 15.31 0 01-3.79-.43c-92.85-23-127.52-115.82-128.93-119.68l-.22-.85c-.76-2.68-19.39-66.33 9.21-103.61 13.11-17 33.05-25.72 59.38-25.72 24.48 0 42.14 7.61 54.28 23.36 10 12.86 14 28.72 17.87 44 8.13 31.82 14 48.53 47.79 50.25 14.84.75 24.59-7.93 30.12-15.32 14.95-20.15 17.55-53 6.28-82C398 228.57 346.61 158 256 158c-38.68 0-74.22 12.43-102.72 35.79-23.59 19.35-42.28 46.67-51.28 74.75-16.69 52.28 5.2 134.46 5.41 135.21A14.83 14.83 0 0196.54 422a15.39 15.39 0 01-18.74-10.6c-1-3.75-24.38-91.4-5.1-151.82 21-65.47 85.81-131.47 183.33-131.47 45.07 0 87.65 15.32 123.19 44.25 27.52 22.5 50 52.72 61.76 82.93 14.95 38.57 10.94 81.86-10.19 110.14-14.08 18.86-34.13 28.72-56.34 27.65-57.86-2.9-68.26-43.29-75.84-72.75-7.8-30.22-12.79-44.79-42.58-44.79-16.36 0-27.85 4.5-35 13.82-9.75 12.75-10.51 32.68-9.43 47.14a152.44 152.44 0 005.1 29.79c2.38 6 33.37 82 107.59 100.39a14.88 14.88 0 0111 18.11 15.36 15.36 0 01-14.8 11.21z"}}),_c('path',{attrs:{"d":"M201.31 489.14a15.5 15.5 0 01-11.16-4.71c-37.16-39-58.18-82.61-66.09-137.14V347c-4.44-36.1 2.06-87.21 33.91-122.35 23.51-25.93 56.56-39.11 98.06-39.11 49.08 0 87.65 22.82 111.7 65.89 17.45 31.29 20.91 62.47 21 63.75a15.07 15.07 0 01-13.65 16.4 15.26 15.26 0 01-16.79-13.29A154 154 0 00340.43 265c-18.64-32.89-47-49.61-84.51-49.61-32.4 0-57.75 9.75-75.19 29-25.14 27.75-30 70.5-26.55 98.78 6.93 48.22 25.46 86.58 58.18 120.86a14.7 14.7 0 01-.76 21.11 15.44 15.44 0 01-10.29 4z"}}),_c('path',{attrs:{"d":"M372.5 446.18c-32.5 0-60.13-9-82.24-26.89-44.42-35.79-49.4-94.08-49.62-96.54a15.27 15.27 0 0130.45-2.36c.11.86 4.55 48.54 38.79 76 20.26 16.18 47.34 22.6 80.71 18.85a15.2 15.2 0 0116.91 13.18 14.92 14.92 0 01-13.44 16.5 187 187 0 01-21.56 1.26zM398.18 48.79C385.5 40.54 340.54 16 256 16c-88.74 0-133.81 27.11-143.78 34a11.59 11.59 0 00-1.84 1.4.36.36 0 01-.22.1 14.87 14.87 0 00-5.09 11.15 15.06 15.06 0 0015.31 14.85 15.56 15.56 0 008.88-2.79c.43-.32 39.22-28.82 126.77-28.82S382.58 74.29 383 74.5a15.25 15.25 0 009.21 3 15.06 15.06 0 0015.29-14.89 14.9 14.9 0 00-9.32-13.82z"}})])])};
+  var __vue_staticRenderFns__ = [];
+
+    /* style */
+    const __vue_inject_styles__ = undefined;
+    /* scoped */
+    const __vue_scope_id__ = undefined;
+    /* module identifier */
+    const __vue_module_identifier__ = undefined;
+    /* functional template */
+    const __vue_is_functional_template__ = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+
+    
+    var fingerPrint = normalizeComponent_1(
+      { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+      __vue_inject_styles__,
+      __vue_script__,
+      __vue_scope_id__,
+      __vue_is_functional_template__,
+      __vue_module_identifier__,
+      undefined,
+      undefined
+    );
+
+  return fingerPrint;
+
+})));

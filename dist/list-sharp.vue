@@ -1,0 +1,27 @@
+<template>
+  <div
+    class="ion"
+    :class="ionClass"
+    :data-title="iconTitle"
+    data-name="list-sharp-icon">
+    <svg viewBox="0 0 512 512"  :width="w" :height="h" class="ion__svg" ><path data-fill="none" stroke="#000" stroke-linejoin="round" stroke-width="48" d="M144 144h320M144 256h320M144 368h320"/><path fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="32" d="M64 128h32v32H64zM64 240h32v32H64zM64 352h32v32H64z"/></svg>
+  </div>
+</template>
+
+<script>
+import IoniconsMixin from './ionicons-mixin'
+
+export default {
+  name: "list-sharp-icon",
+  mixins: [
+    IoniconsMixin
+  ],
+  data () {
+    let iconTitle = this.title ? this.title : "List Sharp Icon"
+    return {
+      iconTitle: iconTitle
+    }
+  }
+}
+</script>
+

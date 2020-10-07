@@ -1,0 +1,27 @@
+<template>
+  <div
+    class="ion"
+    :class="ionClass"
+    :data-title="iconTitle"
+    data-name="mic-sharp-icon">
+    <svg viewBox="0 0 512 512"  :width="w" :height="h" class="ion__svg" ><path data-fill="none" stroke="#000" stroke-linecap="square" stroke-miterlimit="10" stroke-width="32" d="M192 448h128M384 208v32c0 70.4-57.6 128-128 128h0c-70.4 0-128-57.6-128-128v-32M256 368v80"/><path d="M256 320a78.83 78.83 0 01-56.55-24.1A80.89 80.89 0 01176 239V128a79.69 79.69 0 0180-80c44.86 0 80 35.14 80 80v111c0 44.66-35.89 81-80 81z"/></svg>
+  </div>
+</template>
+
+<script>
+import IoniconsMixin from './ionicons-mixin'
+
+export default {
+  name: "mic-sharp-icon",
+  mixins: [
+    IoniconsMixin
+  ],
+  data () {
+    let iconTitle = this.title ? this.title : "Mic Sharp Icon"
+    return {
+      iconTitle: iconTitle
+    }
+  }
+}
+</script>
+
